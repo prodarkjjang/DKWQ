@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    background-color: #1e1e1e;
+    color: white;
+    margin: 0;
+}
+
+.container {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container span {
+    opacity: 0; /* Start hidden */
+}
+
+
