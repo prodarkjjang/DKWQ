@@ -1,0 +1,56 @@
+/* styles.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.space {
+  height: 100vh;
+  background-color: pink;
+}
+
+.scrollElement {
+  position: relative;
+  height: 6000px;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  background-color: green;
+  overflow: hidden;
+}
+
+.sceneItems {
+  position:absolute;
+}
+
+#bg {
+  top: 10px;
+  left: 10px; 
+  height: 200px; 
+  width: 200px; 
+  z-index: 2; 
+  background-color: red; 
+}
+
+
+.parallax-container {
+  position: relative;
+  height: 200vh; /* Make the container taller to enable scrolling */
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.layer-background {
+  background-image: 1;
+  z-index: 1;
+}
+
