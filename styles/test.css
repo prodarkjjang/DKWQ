@@ -1,0 +1,117 @@
+  /* .box {
+    width: 75px;
+    height: 75px;
+    border-radius: 12px;
+    background-color: green;
+    display: block;
+  } */
+
+
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.space {
+    height:100vh;
+    width:100%;
+    background-color: green;
+
+}
+
+.content {
+    position: relative;
+    background-color: yellow;
+    width: 100vw;  
+    max-width: 500px; 
+    height: 60vh; 
+    max-height: 600px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.content div {
+    position: absolute;
+    /* width: 10vw;  
+    max-width: 100px;
+    height: auto;  */
+}
+
+/* we scale to height */
+
+/* background ground plane male female bus busstop tree dog cloud*/
+.background {
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    z-index: 0;
+    left: 100%;
+}
+
+.ground {
+    height: 10%;
+    width: 100%;
+    background-color: black;
+    bottom: 0;
+    z-index: 1;
+    left: 100%;
+}
+
+.groundPlane {
+    bottom: 10%;
+    left: -50%;
+    height: 20%;
+    width: 200px;
+    /* width: auto; */
+    background-color: blue;
+    z-index: 2;
+}
+
+.person {
+    opacity: 1;
+    bottom: 10%;
+    left: 30%;
+    height: 10%;
+    width: 10px;
+    /* width: auto; */
+    background-color: black;
+    z-index: 3;
+}
+
+.tree {
+    bottom: 10%;
+    left: 100%;
+    height: 19%;
+    width: 20px;
+    background-color: rgb(9, 255, 0);
+} 
+
+.busstop {
+    bottom: 10%;
+    left: 100%;
+    height: 17%;
+    width: 120px;
+    background-color: rgb(0, 0, 87);
+}
+
+.bus {
+    bottom: 10%;
+    left: 100%;
+    height: 15%;
+    width: 100px;
+    /* width: auto; */
+    background-color: blue;
+    z-index: 2;
+}
+
+.dog {
+    bottom: 10%;
+    left: 100%;
+    height: 3%;
+    width: 10px;
+    /* width: auto; */
+    background-color: black;
+    z-index: 3;
+}
+
