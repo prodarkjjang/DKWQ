@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop Tiles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .drop-zone {
+            width: 200px;
+            height: 300px;
+            border: 2px dashed #999;
+            display: flex;
+            flex-wrap: wrap; /* Allows items to arrange in rows */
+            align-items: flex-start;
+            padding: 10px;
+            background-color: white;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .tile {
+            width: 50px;
+            height: 50px;
+            background: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: grab;
+            border-radius: 5px;
+            user-select: none;
+            margin: 5px;
+            position: relative; /* Ensures they stay within the flex container */
+        }
+
+        .tile:active {
+            cursor: grabbing;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div id="source-zone" class="drop-zone">
+            <!-- Pre-filled tiles -->
+            <div class="tile">1</div>
+            <div class="tile">2</div>
+            <div class="tile">3</div>
+            <div class="tile">4</div>
+            <div class="tile">5</div>
+        </div>
+        <div id="drop-zone-1" class="drop-zone"></div>
+        <div id="drop-zone-2" class="drop-zone"></div>
+    </div>
+
+    <script src="js/gift.js"></script>
+</body>
+</html>

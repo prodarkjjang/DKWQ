@@ -1,0 +1,99 @@
+/* Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* Sticky Information Box */
+.sticky-info {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 100;
+}
+
+/* Grid Container */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 10px;
+    margin-top: 50px;
+}
+
+/* Individual Tiles */
+.tile {
+    position: relative; /* Needed for absolute positioning of numbers */
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ff7f50, #ff6347);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.2s, filter 0.2s;
+    user-select: none;
+}
+
+/* Before Click */
+.tile::before {
+    content: var(--icon);
+}
+
+/* After Click */
+.tile.clicked {
+    transform: translateY(5px);
+    filter: brightness(70%);
+}
+
+/* Number displayed at the top-left corner */
+.tile::after {
+    content: attr(data-number);  /* Dynamically insert number */
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+#resetButton {
+    width: 100px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#resetButton:hover {
+    background-color: darkred;
+}

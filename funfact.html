@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Grid</title>
+    <link rel="stylesheet" href="styles/funfact.css">
+</head>
+<body>
+
+    <!-- Sticky Info Box -->
+    <div class="sticky-info" id="infoBox">Click a tile to see details.</div>
+
+    <!-- Grid Container -->
+    <div class="grid">
+        <div class="tile" data-info="This is a sun." style="--icon: '☀️';"></div>
+        <div class="tile" data-info="This is a cloud." style="--icon: '☁️';"></div>
+        <div class="tile" data-info="This is rain." style="--icon: '🌧️';"></div>
+        <div class="tile" data-info="This is a star." style="--icon: '⭐';"></div>
+        <div class="tile" data-info="This is fire." style="--icon: '🔥';"></div>
+        <div class="tile" data-info="This is a tree." style="--icon: '🌳';"></div>
+    </div>
+    <div id="resetButton">Reset</div>
+
+    <script src="js/funfact.js"></script>
+</body>
+</html>
