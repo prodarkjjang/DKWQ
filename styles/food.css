@@ -148,13 +148,6 @@ body {
 .book__page:not(.book__cover) .page__half {
   background: repeating-linear-gradient(0deg, transparent 0 1rem, var(--underline) 1rem calc(1rem + 1px), transparent calc(1rem + 1px)) 0 1rem/100% 100% no-repeat, var(--page);
 }
-.sticker {
-  height: 15%;
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-  transform: rotate(-25deg);
-}
 
 
 img {
