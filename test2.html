@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swipe & Drag to Flip Pages</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            overflow: hidden;
+            margin: 0;
+            user-select: none;
+        }
+
+        .book {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .page {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease-in-out;
+            transform-origin: left;
+            cursor: grab;
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            border: 2px solid #333;
+            border-radius: 10px;
+        }
+
+        .front {
+            background-color: #fff;
+            color: black;
+        }
+
+        .back {
+            background-color: #ffcc00;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .flipped {
+            transform: rotateY(-180deg);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="book">
+        <div class="page" id="page1">
+            <div class="front">Page 1</div>
+            <div class="back">Page 2</div>
+        </div>
+        <div class="page" id="page2">
+            <div class="front">Page 3</div>
+            <div class="back">Page 4</div>
+        </div>
+        <div class="page" id="page3">
+            <div class="front">Page 5</div>
+            <div class="back">Page 6</div>
+        </div>
+    </div>
+
+    <script>
+        let pages = document.querySelectorAll('.page');
+let currentPage = 0;
+let startX = 0;
+let endX = 0;
+let isDragging = false;
+let book = document.querySelector('.book');
+
+// Set initial stacking order
+pages.forEach((page, index) => {
+    page.style.zIndex = pages.length - index;
+});
+
+// Handle touch gestures within the book div
+book.addEventListener("touchstart", (event) => {
+    startX = event.touches[0].clientX;
+});
+
+book.addEventListener("touchend", (event) => {
+    endX = event.changedTouches[0].clientX;
+    handleSwipe();
+});
+
+// Handle mouse drag within the book div
+book.addEventListener("mousedown", (event) => {
+    isDragging = true;
+    startX = event.clientX;
+});
+
+book.addEventListener("mousemove", (event) => {
+    if (!isDragging) return;
+    endX = event.clientX;
+});
+
+book.addEventListener("mouseup", () => {
+    if (isDragging) {
+        handleSwipe();
+        isDragging = false;
+    }
+});
+
+// Determine swipe direction and flip pages
+function handleSwipe() {
+    let diff = startX - endX;
+
+    if (diff > 50) {
+        // Swipe left (flip forward)
+        if (currentPage < pages.length) {
+            pages[currentPage].classList.add("flipped");
+            currentPage++;
+        }
+    } else if (diff < -50) {
+        // Swipe right (flip backward)
+        if (currentPage > 0) {
+            currentPage--;
+            pages[currentPage].classList.remove("flipped");
+        }
+    }
+}
+
+    </script>
+
+</body>
+</html>
