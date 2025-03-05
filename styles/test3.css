@@ -1,6 +1,14 @@
 * {
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: 'Lilyshow';
+  src: url('../assets/fonts/lilyshow.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --page-count: 20;
   --page-scroll: 25;
@@ -148,14 +156,7 @@ body {
   transform: rotate(-25deg);
 }
 
-.logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  height: 25%;
-}
+
 img {
   width: 90%;
   height: 90%;
@@ -172,4 +173,67 @@ a {
   width: 100%;
   position: relative;
   display: block;
+}
+
+
+
+
+
+.page_right {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: block;
+  padding: 5px;
+}
+
+.page_top {
+  display: flex;
+  flex-direction: row;
+}
+
+.page_topleft {
+  display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    width: 20%;
+    border-right: 2px solid #ccc;
+    padding-right: 5px;
+}
+.page_topright {
+  width: 80%;
+  padding-left: 5px;
+}
+
+.page_topright p {
+  margin: 0;
+  padding: 0;
+}
+
+
+.page_num {
+  font-size: 1.5rem;
+  /* font-weight: bold; */
+  font-family: 'Lilyshow', sans-serif; 
+}
+
+.page_name {
+  font-size: 16px;
+  line-height: 1;
+  font-weight: bold;
+  font-family: 'Lilyshow', sans-serif; 
+}
+.page_location {
+  font-size: 15px;
+  /* font-weight: bold; */
+  font-family: 'Lilyshow', sans-serif; 
+}
+.page_date {
+  font-size: 15px;
+  font-family: 'Lilyshow', sans-serif; 
+}
+.page_content {
+  font-size: 16px;
+  /* font-weight: bold; */
+  font-family: 'Lilyshow', sans-serif; 
 }

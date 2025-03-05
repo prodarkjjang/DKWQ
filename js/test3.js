@@ -35,3 +35,14 @@ PAGES.forEach((page, index) => {
     },
   });
 });
+
+// Rotate all photos at a random angle
+document.querySelectorAll('.photo').forEach(photo => {
+  gsap.set(photo, {
+    rotate: gsap.utils.random(-10, 10)
+  });
+});
+
+// convert image to webp first
+// resize image to 200 width
+// compress image (optional)
