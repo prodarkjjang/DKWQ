@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Drag and Drop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .dropzone {
+            flex: 1;
+            min-width: 120px;
+            height: 250px;
+            border: 2px dashed #aaa;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            padding: 10px;
+            transition: 0.3s;
+        }
+
+        .dropzone.dragover {
+            border-color: blue;
+            background-color: #e0f7fa;
+        }
+
+        .draggable {
+            width: 100px;
+            padding: 10px;
+            margin: 5px;
+            background-color: lightblue;
+            cursor: grab;
+            text-align: center;
+            border-radius: 5px;
+            touch-action: none; /* Prevents screen scrolling while dragging */
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .dropzone {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="dropzone" id="zone1">
+        <div class="draggable" draggable="true" id="item1">Item 1</div>
+        <div class="draggable" draggable="true" id="item2">Item 2</div>
+    </div>
+    <div class="dropzone" id="zone2"></div>
+    <div class="dropzone" id="zone3"></div>
+</div>
+
+<script>
+    const draggables = document.querySelectorAll(".draggable");
+    const dropzones = document.querySelectorAll(".dropzone");
+
+    let draggedElement = null;
+
+    // Desktop Drag & Drop
+    draggables.forEach(draggable => {
+        draggable.addEventListener("dragstart", (event) => {
+            draggedElement = event.target;
+            event.dataTransfer.setData("text/plain", event.target.id);
+            setTimeout(() => event.target.style.display = "none", 0);
+        });
+
+        draggable.addEventListener("dragend", (event) => {
+            event.target.style.display = "block";
+        });
+    });
+
+    dropzones.forEach(dropzone => {
+        dropzone.addEventListener("dragover", (event) => {
+            event.preventDefault();
+            dropzone.classList.add("dragover");
+        });
+
+        dropzone.addEventListener("dragleave", () => {
+            dropzone.classList.remove("dragover");
+        });
+
+        dropzone.addEventListener("drop", (event) => {
+            event.preventDefault();
+            dropzone.classList.remove("dragover");
+
+            const itemId = event.dataTransfer.getData("text/plain");
+            const dragged = document.getElementById(itemId);
+            if (dragged) {
+                dropzone.appendChild(dragged);
+                console.log(`Dropped ${itemId} into ${dropzone.id}`);
+            }
+        });
+    });
+
+    // Mobile Touch Drag & Drop
+    draggables.forEach(draggable => {
+        draggable.addEventListener("touchstart", (event) => {
+            draggedElement = event.target;
+            event.target.style.opacity = "0.5"; // Make it semi-transparent when picked
+        });
+
+        draggable.addEventListener("touchmove", (event) => {
+            event.preventDefault();
+            const touch = event.touches[0];
+            draggedElement.style.position = "absolute";
+            draggedElement.style.left = touch.pageX - 50 + "px";
+            draggedElement.style.top = touch.pageY - 20 + "px";
+        });
+
+        draggable.addEventListener("touchend", (event) => {
+            draggedElement.style.opacity = "1"; // Restore opacity
+            draggedElement.style.position = "relative";
+            draggedElement.style.left = "auto";
+            draggedElement.style.top = "auto";
+
+            // Check if dropped in a valid dropzone
+            let dropzoneFound = false;
+            dropzones.forEach(dropzone => {
+                const rect = dropzone.getBoundingClientRect();
+                const touch = event.changedTouches[0];
+
+                if (
+                    touch.pageX > rect.left &&
+                    touch.pageX < rect.right &&
+                    touch.pageY > rect.top &&
+                    touch.pageY < rect.bottom
+                ) {
+                    dropzone.appendChild(draggedElement);
+                    dropzoneFound = true;
+                    console.log(`Dropped ${draggedElement.id} into ${dropzone.id}`);
+                }
+            });
+
+            if (!dropzoneFound) {
+                console.log("Dropped outside");
+            }
+
+            draggedElement = null;
+        });
+    });
+</script>
+
+</body>
+</html>

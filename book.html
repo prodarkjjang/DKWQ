@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turn.js Hello World</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="turnjs/book-effect/turn.js"></script> <!-- Ensure you have this file -->
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #flipbook {
+            width: 400px;
+            height: 300px;
+        }
+
+        .page {
+            width: 400px;
+            height: 300px;
+            background: white;
+            text-align: center;
+            font-size: 24px;
+            line-height: 300px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="flipbook">
+        <div class="page">Hello</div>
+        <div class="page">World</div>
+        <div class="page">This is</div>
+        <div class="page">Turn.js</div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#flipbook").turn({
+                width: 400,
+                height: 300,
+                autoCenter: true
+            });
+
+            // Enable swipe gestures
+            $("#flipbook").swipe({
+                swipeLeft: function() {
+                    $("#flipbook").turn("next");
+                },
+                swipeRight: function() {
+                    $("#flipbook").turn("previous");
+                },
+                threshold: 75 // Minimum swipe distance
+            });
+        });
+    </script>
+
+</body>
+</html>
