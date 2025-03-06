@@ -10,8 +10,8 @@
 }
 
 :root {
-  --page-count: 20;
-  --page-scroll: 25;
+  --page-count: 66; /* 20 */
+  --page-scroll: 71; /* 25 */
   --underline: rgba(64,64,64,0.4);
   --spine: #000;
   --cover: #1a1a1a;
@@ -107,7 +107,7 @@ body {
   background: var(--spine);
   transform-origin: 0 50%;
   width: 12px;
-  transform: translate3d(0, 0, -13px) scaleX(1) rotateY(0deg);
+  transform: translate3d(0, 0, -67px) scaleX(1) rotateY(0deg);
 }
 .book__page {
   position: absolute;
@@ -161,16 +161,6 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-a {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  display: block;
-}
-
-
-
-
 
 .page_right {
   height: 100%;
@@ -229,4 +219,11 @@ a {
   font-size: 16px;
   /* font-weight: bold; */
   font-family: 'Lilyshow', sans-serif; 
+}
+
+.photo {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
 }
