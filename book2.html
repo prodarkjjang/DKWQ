@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turn.js Hello World</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="turnjs/book-effect/turn.js"></script> <!-- Ensure you have this file -->
+    <style>
+        body {
+            overflow:hidden;
+            background-color: deepskyblue;
+        }
+
+        #flipbook {
+            width: 400px;
+            height: 200px;
+            margin:5% auto;
+        }
+
+        #flipbook .turn-page {
+            -webkit-background-size: 100% 100%;
+            background-size:100% 100%;
+        }
+
+        #flipbook div {
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-position: center center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="flipbook">
+        <div style="background-image: url(assets/images/food/1.webp);"></div>
+        <div style="background-image: url(assets/images/food/1.webp);"></div>
+        <div style="background-image: url(assets/images/food/1.webp);"></div>
+        <div style="background-image: url(assets/images/food/1.webp);"></div>
+        <div style="background-image: url(assets/images/food/1.webp);"></div>
+        <div style="background-image: url(assets/images/food/1.webp);"></div>
+    </div>
+
+    <script>
+        $('#flipbook').turn({gradient: true, acceleration:true});
+    </script>
+
+</body>
+</html>
+
+<!-- 
+version 3
+https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js -->
