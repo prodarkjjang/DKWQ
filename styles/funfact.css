@@ -29,32 +29,65 @@ body {
 /* Grid Container */
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    gap: 10px;
-    margin-top: 50px;
+    grid-template-columns: repeat(5, 1fr); /* Always 5 blocks per row */
+    gap: 10px; /* Small gap between blocks */
+    width: 95vw; /* Make sure grid takes 90% of the viewport width */
+    max-width: 500px; /* Optional: Limit max grid width */
 }
 
 /* Individual Tiles */
 .tile {
-    position: relative; /* Needed for absolute positioning of numbers */
-    width: 100px;
-    height: 100px;
+    position: relative; 
+    width: 100%;  
+    aspect-ratio: 1 / 1; 
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #ff7f50, #ff6347);
     color: white;
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 2.5rem; 
     cursor: pointer;
     border-radius: 10px;
     transition: transform 0.2s, filter 0.2s;
     user-select: none;
 }
 
+.tile-orange {
+    background: linear-gradient(135deg, #ff7f50, #ff6347);
+}
+.tile-blue {
+    background: linear-gradient(135deg, #4682b4, #5f9ea0);
+}
+.tile-green {
+    background: linear-gradient(135deg, #32cd32, #228b22);
+}
+.tile-yellow {
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+}
+.tile-purple {
+    background: linear-gradient(135deg, #9400d3, #8a2be2);
+}
+.tile-pink {
+    background: linear-gradient(135deg, #ff1493, #ff69b4);
+}
+.tile-black {
+    background: linear-gradient(135deg, #000000, #333333);
+}
+.tile-black {
+    background: linear-gradient(135deg, #000000, #333333);
+}
+.tile-white {
+    background: linear-gradient(135deg, #ffffff, #dddddd);
+}
+.tile-beige {
+    background: linear-gradient(135deg, #f5f5dc, #d2b48c);
+}
+
+
 /* Before Click */
 .tile::before {
     content: var(--icon);
+    font-size: 2.5rem; /* Make icons bigger */
 }
 
 /* After Click */
@@ -67,18 +100,18 @@ body {
 .tile::after {
     content: attr(data-number);  /* Dynamically insert number */
     position: absolute;
-    top: 5px;
-    left: 8px;
+    top: 0px;
+    left: 0px;
     background: rgba(0, 0, 0, 0.8);
     color: white;
     font-size: 14px;
     font-weight: bold;
-    width: 22px;
-    height: 22px;
+    width: 30%;
+    height: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 0 0 50% 0;
 }
 
 #resetButton {
